@@ -122,4 +122,20 @@ public class LinqExtensionsTests
         }
         Assert.That(randomRollCounts.Values, Is.All.InRange(200000, 300000));
     }
+
+    [Test]
+    public void AsList_List_SameList()
+    {
+        IEnumerable<int> inputList = new List<int> { 1, 2, 3 };
+        var outputList = inputList.AsList();
+        Assert.That(ReferenceEquals(inputList, outputList));
+    }
+
+    [Test]
+    public void AsList_Array_EquivalentList()
+    {
+        IEnumerable<int> inputArray = new int[] { 1, 2, 3 };
+        var outputList = inputArray.AsList();
+        Assert.That(outputList, Is.EquivalentTo(inputArray));
+    }
 }

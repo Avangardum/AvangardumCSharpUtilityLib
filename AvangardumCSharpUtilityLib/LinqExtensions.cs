@@ -36,8 +36,14 @@ public static class LinqExtensions
 
     public static T Random<T>(this IEnumerable<T> sequence)
     {
-        var list = sequence as List<T> ?? sequence.ToList();
+        var list = sequence.AsList();
         var index = Randomizer.Next(0, list.Count);
         return list[index];
     }
+
+    /// <summary>
+    /// Casts a given sequence to a list if possible. If the cast cannot be performed, creates a new list from the 
+    /// sequence using ToList instead. Provides better performance than ToList in case if cast is performed.
+    /// </summary>
+    public static List<T> AsList<T>(this IEnumerable<T> sequence) => sequence as List<T> ?? sequence.ToList();
 }
