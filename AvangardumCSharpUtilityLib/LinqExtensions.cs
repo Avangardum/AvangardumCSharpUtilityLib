@@ -2,6 +2,8 @@ namespace Avangardum.AvangardumCSharpUtilityLib;
 
 public static class LinqExtensions
 {
+    private static readonly Random Randomizer = new();
+    
     #region Product
 
     public static int Product(this IEnumerable<byte> numbers) => numbers.Aggregate(1, (a, b) => a * b);
@@ -31,4 +33,11 @@ public static class LinqExtensions
     public static decimal Product(this IEnumerable<decimal> numbers) => numbers.Aggregate(1m, (a, b) => a * b);
 
     #endregion
+
+    public static T Random<T>(this IEnumerable<T> sequence)
+    {
+        var list = sequence as List<T> ?? sequence.ToList();
+        var index = Randomizer.Next(0, list.Count);
+        return list[index];
+    }
 }
