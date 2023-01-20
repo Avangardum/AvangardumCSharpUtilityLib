@@ -111,7 +111,7 @@ public class LinqExtensionsTests
     #endregion
 
     [Test]
-    public void Random_1And2And4And4Run1000000Times_ReturnsEveryNumber200000To300000Times()
+    public void Random_1And2And4And4Run1MTimes_ReturnsEveryNumber200KTo300KTimes()
     {
         IEnumerable<int> numbers = new List<int> { 1, 2, 3, 4 };
         Dictionary<int, int> randomRollCounts = new Dictionary<int, int> { [1] = 0, [2] = 0, [3] = 0, [4] = 0 };
