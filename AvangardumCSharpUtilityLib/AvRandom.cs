@@ -1,8 +1,11 @@
-namespace Avangardum.AvangardumCSharpUtilityLib;
+using System;
 
-public class AvRandom
+namespace Avangardum.AvangardumCSharpUtilityLib
 {
-    private static readonly Random Random = new();
+    public class AvRandom
+    {
+        private static readonly Random Random = new Random();
 
-    public static bool NextBool(double probability = 0.5) => probability > Random.NextDouble();
+        public static bool NextBool(double probability = 0.5) => probability > Random.NextDouble();
+    }
 }

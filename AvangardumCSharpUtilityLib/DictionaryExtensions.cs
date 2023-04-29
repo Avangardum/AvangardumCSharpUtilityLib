@@ -1,16 +1,21 @@
-namespace Avangardum.AvangardumCSharpUtilityLib;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public static class DictionaryExtensions
+namespace Avangardum.AvangardumCSharpUtilityLib
 {
-    public static TKey GetKey<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TValue value) where TKey : notnull
+    public static class DictionaryExtensions
     {
-        var matchingValuesCount = dictionary.Values.Count(v => Equals(v, value));
-        if (matchingValuesCount != 1)
+        public static TKey GetKey<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TValue value)
         {
-            throw new InvalidOperationException($"GetKey should be called only when there is exactly 1 " +
-                $"matching value in the dictionary. Values matched: {matchingValuesCount}.");
-        }
+            var matchingValuesCount = dictionary.Values.Count(v => Equals(v, value));
+            if (matchingValuesCount != 1)
+            {
+                throw new InvalidOperationException($"GetKey should be called only when there is exactly 1 " +
+                                                    $"matching value in the dictionary. Values matched: {matchingValuesCount}.");
+            }
         
-        return dictionary.Single(p => Equals(p.Value, value)).Key;
+            return dictionary.Single(p => Equals(p.Value, value)).Key;
+        }
     }
 }

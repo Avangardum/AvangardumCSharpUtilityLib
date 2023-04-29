@@ -67,23 +67,7 @@ public class LinqExtensionsTests
         var result = numbers.Product();
         Assert.That(result, Is.EqualTo(24));
     }
-    
-    [Test]
-    public void Product_2And3And4Nint_24()
-    {
-        var numbers = new List<nint> { 2, 3, 4 };
-        var result = numbers.Product();
-        Assert.That(result, Is.EqualTo((nint)24));
-    }
-    
-    [Test]
-    public void Product_2And3And4Nuint_24()
-    {
-        var numbers = new List<nuint> { 2, 3, 4 };
-        var result = numbers.Product();
-        Assert.That(result, Is.EqualTo((nuint)24));
-    }
-    
+
     [Test]
     public void Product_2And3And4Float_24()
     {
